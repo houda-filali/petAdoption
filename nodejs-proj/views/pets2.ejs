@@ -1,0 +1,61 @@
+<%- include("base/header.ejs") %>
+<tr>
+    <td class="contentarea">
+        <div class="contentarea">
+            <div>
+                <% if (dogCount === 0) { %>
+                    <div>
+                        <h3>At the moment, Dogs & Cats Forever Homes has no dogs or cats available for adoption.</h3>
+                        <h4>We will display available pets once we receive them.</h4>
+                    </div>
+                <% } else { %>
+                        <div>
+                            <h2>BROWSE CATS</h2>
+                        </div>
+                    <% if (catCount === 0) { %>
+                        <p>No available cats fit your preferences. Try a different set of preferences.</p>
+                    <% } else { %>
+                        <% for (var i = 0; i < matchPets.length; i++) { %>
+                            <% if (matchPets[i][2] === "cat") { %>
+                                <div class="pets">
+                                    <div class="textContainer">
+                                        <h3>Breed: <%= matchPets[i][3] %></h3>
+                                        <p>Age: <%= matchPets[i][4] %></p>
+                                        <p>Gender: <%= matchPets[i][5] %></p>
+                                        <p>Groups, they get along with: <%= matchPets[i][6] %></p>
+                                        <p>Comments made by owner: <%= matchPets[i][7] %></p>
+                                    </div>
+                                    <button class="interestedButton">Interested</button>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    <div>
+                        <div>
+                            <h2>BROWSE DOGS</h2>
+                        </div>
+                    </div>
+                    <% if (dogCount === 0) { %>
+                        <p>No available dogs fit your preferences. Try a different set of preferences.</p>
+                    <% } else { %>
+                        <% for (var i = 0; i < matchPets.length; i++) { %>
+                            <% if (matchPets[i][2] === "dog") { %>
+                                <div class="pets">
+                                    <div class="textContainer">
+                                        <h3>Breed: <%= matchPets[i][3] %></h3>
+                                        <p>Age: <%= matchPets[i][4] %></p>
+                                        <p>Gender: <%= matchPets[i][5] %></p>
+                                        <p>Groups they get along with: <%= matchPets[i][6] %></p>
+                                        <p>Extra comments made by owner: <%= matchPets[i][7] %></p>
+                                    </div>
+                                    <button class="interestedButton">Interested</button>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                <% } %> 
+            </div>
+        </div>  
+    </td>
+</tr>
+<%- include("base/footer.ejs") %>

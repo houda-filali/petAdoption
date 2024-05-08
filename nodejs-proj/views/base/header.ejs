@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs & Cats Forever Homes</title>
+    <link rel="stylesheet" href="/AdoptStyle.css">
+    <script src="/index.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <table>
+            <tr>
+                <td>
+                    <h1><a href="/"><img src="/dogcat.png" alt="Dogs & Cats Forever Homes" width="80" height="80"></a>Dogs & Cats Forever Homes </h1>
+                </td>
+                <td style="width: 90px;"> </td>
+                <td><p id="currentDateTime" style="text-align: right;"></p></td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+<script>
+    function validateFindForm() {
+
+        // Retreive inputs of each field
+        const typepet = document.querySelector('input[name="typepet"]:checked');
+        const breed = document.querySelector('input[name="breed"]:checked');
+        const age = document.querySelector('#age').value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const group = document.querySelectorAll('input[name="group"]:checked');
+
+        // Check if a field is left empty
+        if (!typepet || !breed || !age || !gender || group.length === 0) {
+            alert('Please fill out every field.');
+
+            // Form will not be submitted
+            return false;}
+
+        // Form will be submitted
+        return true;
+    }
+
+    // Validate "Give away your dog or cat" form
+
+    function validateGiveawayForm() {
+
+        // Retreive inputs of each field
+        const typepet = document.querySelector('input[name="typepet"]:checked');
+        const breed = document.querySelector('input[name="breed"]:checked');
+        const age = document.querySelector('#age').value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const group = document.querySelectorAll('input[name="group"]:checked');
+        const fullName = document.querySelector('#fullname').value.trim();
+        const email = document.querySelector('#email').value.trim();
+
+        if (!typepet || !breed || !age || !gender || group.length === 0 || fullName === '' || email === '') {
+            alert('Please fill out every field and/or enter a valid email address.');
+            
+            // Form will not be submitted
+            return false;}
+
+        // email requirements
+        const emailRequirements = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRequirements.test(email)) {
+            alert('Please enter a valid email address.');
+
+            // Form will not be submitted
+            return false;}
+
+        // Form will be submitted
+        return true;
+    }
+
+    function getDateTime() {
+        const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        const optionsTime = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+
+        // Date information
+        const currentDate = new Date().toLocaleDateString('en-CA', optionsDate);
+
+        // Time information
+        const currentTime = new Date().toLocaleTimeString('en-CA', optionsTime)
+
+        document.getElementById('currentDateTime').textContent = currentDate + ' ' + currentTime;
+    }
+
+    // Call getDateTime function initially and every second
+    getDateTime();
+    setInterval(getDateTime, 1000);
+</script>
+
+<div class="sidemenu">
+    <nav>
+        <ul>
+            <li><a href="/">Home page</a></li>
+            <li><a href="/signup">Create an account</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/find">Find a dog/cat</a></li>
+            <li><a href="/dogcare">Dog Care</a></li>
+            <li><a href="/catcare">Cat Care</a></li>
+            <li><a href="/giveaway">Have a pet to give away</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</div>

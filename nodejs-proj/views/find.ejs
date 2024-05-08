@@ -1,0 +1,95 @@
+<%- include("base/header.ejs") %>
+<script>
+    function validatePetForm(formInfo) {
+    const requiredFields = ['typepet', 'breed', 'ages', 'gender', 'group'];
+    for (const field of requiredFields) {
+        if (!formInfo[field] || formInfo[field].trim() === '') {
+            return false;}
+    }
+    return true;
+}
+function validateEmail(email){
+    return (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))}
+
+</script>
+<tr>
+    <td>
+        <div class="centered-content">
+        <h2>FIND YOUR FUTURE DOG OR CAT</h2>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="contentarea">
+        <%if(!isFilled){%>
+            <div><%= msg %></div>
+        <%}%>
+        <form id="findForm"action="/find" name = "petForm" onsubmit="return validatePetForm()" method="post">
+            <fieldset class="contentarea">
+                <legend>Future Dog or Cat Preferences</legend>
+                    <br><p>Cat or Dog? </p><br>
+                    <input type="radio" id="cat" name="typepet" value="cat" <%= formInfo && formInfo.typepet === 'cat' ? 'checked' : '' %>>
+                    <label for="cat">Cat</label>
+
+                    <input type="radio" id="dog" name="typepet" value="dog" <%= formInfo && formInfo.typepet === 'dog' ? 'checked' : '' %>>
+                    <label for="dog">Dog</label><br>
+
+                    <br><p>Breed of cat or dog? </p><br>
+                    <input type="radio" id="pitbull" name="breed" value="pitbull" <%= formInfo && formInfo.breed === 'pitbull' ? 'checked' : '' %>>
+                    <label for="pitbull">Pitbull (dog)</label>
+
+                    <input type="radio" id="husky" name="breed" value="husky" <%= formInfo && formInfo.breed === 'husky' ? 'checked' : '' %>>
+                    <label for="husky">Husky (dog)</label>
+
+                    <input type="radio" id="labrador" name="breed" value="labrador" <%= formInfo && formInfo.breed === 'labrador' ? 'checked' : '' %>>
+                    <label for="labrador">Labrador (dog)</label><br>
+                    
+                    <input type="radio" id="birman" name="breed" value="birman" <%= formInfo && formInfo.breed === 'birman' ? 'checked' : '' %>>
+                    <label for="birman">Birman (cat)</label>
+
+                    <input type="radio" id="bengal" name="breed" value="bengal" <%= formInfo && formInfo.breed === 'bengal' ? 'checked' : '' %>>
+                    <label for="bengal">Bengal (cat)</label>
+
+                    <input type="radio" id="sphynx" name="breed" value="sphynx" <%= formInfo && formInfo.breed === 'sphynx' ? 'checked' : '' %>>
+                    <label for="sphynx">Sphynx (cat)</label><br>
+
+                    <input type="radio" id="any" name="breed" value="any" <%= formInfo && formInfo.breed === 'any' ? 'checked' : '' %>>
+                    <label for="any">Any</label><br>
+
+                    <br><p>Preferred age of pet? </p><br>
+                    <select name="ages" id="age">
+                        <option value="baby" <%= formInfo && formInfo.ages === 'baby' ? 'selected' : '' %>>Less than 1 years old</option>
+                        <option value="kid" <%= formInfo && formInfo.ages === 'kid' ? 'selected' : '' %>>Between 1 and 7</option>
+                        <option value="adult" <%= formInfo && formInfo.ages === 'adult' ? 'selected' : '' %>>More than 7</option>
+                    </select><br>
+
+                    <p>Gender:</p>
+                    <input type="radio" id="female" name="gender" value="female" checked = "checked" <%= formInfo && formInfo.gender === 'female' ? 'checked' : '' %>>
+                    <label for="female">Female</label>
+
+                    <input type="radio" id="male" name="gender" value="male" <%= formInfo && formInfo.gender === 'male' ? 'checked' : '' %>>
+                    <label for="male"> Male</label><br>
+
+                    <input type="radio" id="anygender" name="gender" value="any" <%= formInfo && formInfo.gender === 'any' ? 'checked' : '' %>>
+                    <label for="anygender">Any</label><br><br>
+
+                    <p>Which groups does your dog or cat need to get along with? (Pick as many as apply)</p><br>
+                    <input type="checkbox" id="group1" name="group" value="Dogs" <%= formInfo && formInfo.group === 'Dogs' ? 'checked' : '' %>>
+                    <label for="group1">Dogs </label>
+                    <input type="checkbox" id="group2" name="group" value="Cats" <%= formInfo && formInfo.group === 'Cats' ? 'checked' : '' %>>
+                    <label for="group2">Cats </label>
+                    <input type="checkbox" id="group3" name="group" value="children" <%= formInfo && formInfo.group === 'children' ? 'checked' : '' %>>
+                    <label for="group3">Small children </label><br>
+                    <input type="checkbox" id="group4" name="group" value="None" <%= formInfo && formInfo.group === 'none' ? 'checked' : '' %>>
+                    <label for="group4">None </label>
+                    
+            </fieldset>
+            <div>
+            <p>Thank you for filling out the form!<br> Dogs or cats on Dogs & Cats Forever Homes corresponding to your preferences will appear after you submit.</p>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset"><br><br><br><br><br>
+            </div>
+        </form>
+
+<%- include("base/footer.ejs") %>

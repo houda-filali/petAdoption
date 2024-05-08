@@ -1,0 +1,67 @@
+<%- include("base/header.ejs") %>
+<script>
+
+    function validatePassword(){
+        let password = document.getElementById("password").value;
+            if(password.length >= 4){
+                if(/\d+[a-zA-z]+/.test(password) || /[a-zA-z]+\d+/.test(password)){
+                    return true;}
+                else{
+                    return false;}
+            }
+            else{
+                return false;}
+    }
+    function validateUsername(){
+        let username = document.getElementById("username").value;
+            if(/\w+/.test(username)){
+                return true;}
+            else{
+                return false;}
+    }
+    function validateUserInfo(){
+        let goodUsername = validateUsername();
+        let goodPassword = validatePassword();
+        let alreadyTaken = false;
+
+        if(document.getElementById("username").value.trim() === ""|| document.getElementById("password").value.trim() === ""){
+            let msg = document.getElementById("signUpFail")
+            msg.innerHTML = "Don't leave any field empty.";
+            return false;
+        }
+        else if(goodUsername && goodPassword){
+                return true;
+        }
+        else{
+            let msg = document.getElementById("signUpFail")
+            msg.innerHTML = "Follow username and password format.";
+            let servermsg = document.getElementById("servermsg");
+            servermsg.style.display = "none";
+            return false;
+        }
+    }
+    </script>
+            <tr>
+ 
+                <td class="contentarea">
+                    <article class="contentarea" style="width: 500px;">
+                        <div></div>
+                        <div>
+                            <%if(redBox){%>
+                            <div id="redBox"><%=msg%></div>
+                            <%}%>
+                        </div>
+                        <fieldset id="signUpField">
+                            <form action="/login" name="signUpForm" method="post" onsubmit="return validateUserInfo()">
+                                    <h2 id="signup">LOG IN</h2>
+                                        <input id="username" name="username" type="text" placeholder="Username">
+                                        <p class="signUpInfo">(Username entered must contain only letters/digits)</p>
+                                        <input id="password" name="password" type="password" placeholder="Password">
+                                        <p class="signUpInfo">(Password entered must be minimum 4 characters; contain only letters/digits; contain minimum 1 letter and 1 digit)</p>
+                                        <input type = "submit" value = "Log in" id="submit">
+                            </form>
+                        </fieldset>
+                    </article>
+                </td>
+            </tr>
+<%- include("base/footer.ejs") %>

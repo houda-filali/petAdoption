@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    font-family: "Gill Sans", sans-serif;
+}
+
+fieldset {
+    border-color: #b6e0ec;
+}
+
+header {
+    background-color: #b6e0ec;
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    height: 130px;
+}
+
+.sidemenu{
+    width: 150px;
+    position: fixed;
+    left: 5px;
+    top: 165px;
+}
+
+.sidemenu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidemenu li:hover a {
+    color: white;
+}
+.sidemenu li:hover {
+    background-color: #b6e0ec;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.contentarea{
+    margin-left: 170px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 700px;
+}
+.contentarea h2{
+    color:#000000;
+}
+
+#pets{
+    list-style-type: none;
+}
+
+.imagecontent {
+    position: absolute;
+    top: 150px;
+    margin-left:350px;
+}
+
+.imagebrowse {
+    position: absolute;
+    top: 250px;
+    margin-left:250px;
+}
+
+body{
+    background-color: rgb(203, 199, 199);
+    background-image: url('paw-4.png');
+    margin: 0;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thank-message {
+    margin-left: 180px;
+}
+
+.privacy-link a{
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #b6e0ec;
+    color: black;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

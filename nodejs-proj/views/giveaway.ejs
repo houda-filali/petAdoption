@@ -1,0 +1,97 @@
+<%- include("base/header.ejs") %>
+<tr>
+    <td>
+        <div class="centered-content">
+        <h2>GIVE AWAY YOUR DOG OR CAT</h2>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="contentarea">
+            <%if(!isFilled){%>
+                <div><%= msg %></div>
+            <%}%>
+            <form action="/giveaway" name="petForm" onsubmit="return validatePetForm()" method="post" id="giveawayForm">
+                <fieldset class="contentarea">
+                    <legend>Your Pet's Description</legend>
+                        <br><p>Cat or Dog? </p><br>
+                        <input type="radio" id="cat" name="typepet" value="cat">
+                        <label for="cat">Cat</label>
+        
+                        <input type="radio" id="dog" name="typepet" value="dog">
+                        <label for="dog">Dog</label><br>
+        
+                        <br><p>Breed of cat or dog? </p><br>
+                        <input type="radio" id="pitbull" name="breed" value="pitbull">
+                        <label for="pitbull">Pitbull (dog)</label>
+        
+                        <input type="radio" id="husky" name="breed" value="husky">
+                        <label for="husky">Husky (dog)</label>
+        
+                        <input type="radio" id="labrador" name="breed" value="labrador">
+                        <label for="labrador">Labrador (dog)</label>
+        
+                        <input type="radio" id="labradorhusky" name="breed" value="labradorhusky">
+                        <label for="labradorhusky">Labrador X Husky (dog)</label><br>
+                        
+                        <input type="radio" id="birman" name="breed" value="birman">
+                        <label for="birman">Birman (cat)</label>
+        
+                        <input type="radio" id="bengal" name="breed" value="bengal">
+                        <label for="bengal">Bengal (cat)</label>
+        
+                        <input type="radio" id="sphynx" name="breed" value="sphynx">
+                        <label for="sphynx">Sphynx (cat)</label><br>
+        
+                        <br><p>Age of your pet? </p><br>
+                        <select name="ages" id="age">
+                            <option value="baby">Less than 1 years old</option>
+                            <option value="kid">Between 1 and 7</option>
+                            <option value="adult">More than 7</option>
+                        </select><br>
+        
+                        <br><p>Gender of your pet: </p><br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+        
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+        
+                        <p>Which groups does your dog or cat get along with? (Pick as many as apply)</p><br>
+                        <input type="checkbox" id="group1" name="group" value="Dogs">
+                        <label for="group1">Dogs </label>
+                        <input type="checkbox" id="group2" name="group" value="Cats">
+                        <label for="group2">Cats </label>
+                        <input type="checkbox" id="group3" name="group" value="children">
+                        <label for="group3">Small children </label><br>
+                        <input type="checkbox" id="group4" name="group" value="None">
+                        <label for="group4">None </label><br><br>
+        
+                        <p>Comment</p><br>
+                        <p>
+                            <textarea name = "comment" rows = "3"
+                            cols = "40">
+                            (Any particularities of your pet)
+                            </textarea>
+                        </p><br>
+        
+                        <br><p>Given and family name of the pet's owner</p><br>
+                        <input type="text" id="fullname" name="fullname"><br>
+        
+                        <br><br><p>Email of the pet's owner </p><br>
+                        <input type="email" id="email" name="email"><br>
+                        
+                </fieldset> 
+        
+                <div>
+                <p>Thank you for filling out the form!<br> Your dog or cat will be added to the list of available pets on Dogs & Cats Forever Homes after you submit.</p>
+        
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset"><br><br><br><br><br>
+                </div>
+            </form>
+    </td>
+    </tr>
+
+
+<%- include("base/footer.ejs") %>
